@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort Practice</title>
+</head>
+<body>
+    Merge Sort Practice
+    (tip: check the console)
+
+    <script>
+
+        const arr1 = [3, 2, 1, 13, 8, 5, 0, 1]
+        const arr2 = [105, 79, 100, 110] // two test cases
+
+        const arr3 = [1, 2]
+
+        function sort (a) {
+            //base case: array length is one object = sorted
+            if (a.length <= 1) {
+                console.log('fulfilled');
+                return a;
+            } else {
+                //recursive: split & sort
+
+                //1: sort left side
+                let firstHalf = a.slice(0, (a.length / 2))
+                console.log("first: " + firstHalf)
+                firstHalf = sort(firstHalf)
+
+                
+
+
+                //2: sort right side
+                let secondHalf = a.slice(a.length /2)
+                console.log("second: " + secondHalf)
+                secondHalf = sort(secondHalf)
+
+
+                //3: merge
+                console.log(a)
+                console.log("merging:")
+                console.log(firstHalf)
+                console.log(secondHalf)
+                const c = merge(firstHalf, secondHalf)
+                console.log(c)
+
+                return c
+
+            
+            }
+        }
+
+        console.log(sort(arr2))
+
+
+
+
+
+
+
+
+
+
+        //////////////////
+
+
+
+    function merge (firstHalf, secondHalf) {
+        const n = firstHalf.length - 1;
+        const m = secondHalf.length - 1;
+
+        let newArr = []
+
+        let i = 0;
+        let j = 0;
+        let k = 0;
+
+        while (i <= n && j <= m) {
+            if (firstHalf[i] < secondHalf[j]) {
+                newArr[k++] = firstHalf[i++];
+            } else {
+                newArr[k++] = secondHalf[j++];
+            }
+        }
+            // add anything that remains to the new array
+            while (i <= n) {
+                newArr[k++] = firstHalf[i++]
+            }
+            while (j <= m) {
+                newArr[k++] = secondHalf[j++]
+            }
+
+
+        return newArr;
+    }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
